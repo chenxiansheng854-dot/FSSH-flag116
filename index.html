@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鳳中旗手 | FSFB 116th</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<style>
+html { scroll-behavior: smooth; }
+body { font-family: 'Noto Serif TC', serif; background-color: #E1E1DF; color: #161D15; margin: 0; overflow-x: hidden; }
+section { scroll-margin-top: 15vh; }
+
+/* Hero 背景 + 視差效果 */
+.hero-bg {
+    height: 100vh; width: 100%; display: flex; align-items: center; justify-content: center;
+    background-attachment: fixed;
+    background-image: linear-gradient(rgba(22, 29, 21, 0.4), rgba(171, 140, 131, 0.2)), 
+                      url("hero.jpg"), 
+                      url("/static/hero.jpg");
+    background-size: cover; background-position: center;
+    transition: background-position 0.3s ease-out;
+}
+
+.vertical-title-container { 
+    writing-mode: vertical-rl; 
+    text-orientation: mixed; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    line-height: 1.2; 
+    letter-spacing: 0.6em; 
+    white-space: nowrap; 
+}
+.hero-title { opacity: 0; transform: translateY(30px); animation: heroFade 1.8s ease forwards; animation-delay: 0.5s; }
+@keyframes heroFade { to { opacity: 1; transform: translateY(0); } }
+
+.title-frame { border-left: 1px solid rgba(255,255,255,0.4); border-right: 1px solid rgba(255,255,255,0.4); padding: 40px 20px; background: rgba(204, 185, 170, 0.2); backdrop-filter: blur(8px); }
+
+/* Section 區塊動畫 */
+.fade-section {
+    position: relative; border-radius: 4px; padding: 60px 30px;
+    background-color: rgba(239, 240, 234, 0.85);
+    border: 1px solid #D2CABF; 
+    box-shadow: 0 4px 20px rgba(22, 29, 21, 0.05);
+    opacity: 0; transform: translateY(50px); transition: all 1.2s ease-out; margin-bottom: 40vh;
+}
+.fade-section.show { opacity:1; transform: translateY(0); transition: all 1.2s cubic-bezier(0.4,0,0.2,1); }
+.line { opacity:0; transform: translateY(15px); transition: all 0.8s ease; margin-bottom:8px; position: relative; z-index: 20; color: #737C75; }
+.line.show { opacity:1; transform: translateY(0); }
+
+/* ✨ 全畫面呼吸光暈粒子系統 */
+#particle-container {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: -1;
+    overflow: hidden;
+    will-change: transform;
+}
+.glow {
+    position: absolute; border-radius: 50%; opacity: 0;
+    filter: blur(4px);
+    animation: glowPulse 10s ease-in-out infinite;
+}
+@keyframes glowPulse {
+    0% { transform: translate(0,0) scale(1); opacity: 0; }
+    30% { opacity: 0.6; }
+    70% { opacity: 0.6; } 
+    100% { transform: translate(40px, -60px) scale(1.4); opacity: 0; }
+}
+
+/* 側邊導航 (電腦版) */
+.side-nav { position: fixed; right: 40px; top: 50%; transform: translateY(-50%); z-index: 100; writing-mode: vertical-rl; border-right:2px solid #D2CABF; padding-right:15px; transition: all 0.4s ease; }
+.side-nav a { display:block; margin:25px 0; font-size:0.9rem; letter-spacing:0.4em; color:#D2CABF; transition: all 0.4s ease; text-decoration:none; position:relative; }
+.side-nav a.active { color:#161D15 !important; font-weight:900; transform:translateX(-10px); }
+.side-nav a.active::after { content:''; position:absolute; top:-10px; right:-17px; width:6px; height:6px; background:#161D15; border-radius:50%; }
+
+/* 卡片 & IG */
+.benefit-card { background-color: #F8F8F8; border-top: 8px solid #C5AB89; color: #161D15; width: 100%; }
+.ig-icon { display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; border: 1px solid #D2CABF; text-decoration: none; color: #D2CABF; font-size: 1.5rem; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+.ig-icon:hover { transform: rotate(360deg); color: #AB8C83; border-color: #AB8C83; background-color: rgba(171, 140, 131, 0.1); }
+
+/* 手機版 */
+@media (max-width:768px){
+    .hero-bg { background-attachment: scroll; }
+    .vertical-title-container { font-size: 2.5rem !important; letter-spacing: 0.4em !important; }
+    .side-nav { display: none; }
+    .fade-section { flex-direction: column !important; text-align: left !important; margin-bottom: 25vh !important; margin-top: 10vh !important; padding: 40px 20px !important; }
+    .mr-12, .ml-12 { margin: 0 !important; margin-bottom: 20px !important; }
+    .line-group, .line-group div { text-align: left !important; }
+}
+</style>
+</head>
+
+<body>
+
+<div id="particle-container"></div>
+
+<nav class="side-nav">
+    <a href="#about">工作內容</a>
+    <a href="#training">訓練時間</a>
+    <a href="#benefits">福利制度</a>
+</nav>
+
+<section class="hero-bg">
+    <div class="title-frame">
+        <h1 class="vertical-title-container hero-title text-5xl md:text-8xl font-bold text-white drop-shadow-2xl">
+            <span>鳳中旗手</span>
+        </h1>
+    </div>
+</section>
+
+<div class="max-w-4xl mx-auto px-6 md:px-10">
+    <section id="about" class="fade-section mt-[20vh] md:mt-[40vh] flex items-start">
+        <div class="mr-12"><h2 style="writing-mode: vertical-rl;" class="text-3xl font-bold tracking-[0.5em] text-[#161D15]">工作內容</h2></div>
+        <div class="line-group leading-loose tracking-widest text-lg md:pt-16">
+            <div class="line">不容落地的旗幟、鳳中的精神傳承</div>
+            <div class="line">我們升起國旗、拉開大會旗</div>
+            <div class="line">每一步都是震撼心頭的印記</div>
+            <div class="line">以及昂首向前的勇氣</div>
+        </div>
+    </section>
+
+    <section id="training" class="fade-section flex flex-row-reverse items-start">
+        <div class="ml-12"><h2 style="writing-mode: vertical-rl;" class="text-3xl font-bold tracking-[0.5em] text-[#161D15]">訓練時間</h2></div>
+        <div class="line-group leading-loose tracking-widest text-lg md:pt-16 text-right">
+            <div class="line">平日練習｜</div>
+            <div class="line">每周二、四 12：10</div>
+            <div class="line">專注、負責、堅持</div>
+            <div class="line">每一次跨步都是為了一次閃耀</div>
+        </div>
+    </section>
+
+    <section id="benefits" class="fade-section">
+        <div class="flex flex-col items-center justify-center mb-10 md:mb-16">
+            <h2 style="writing-mode: vertical-rl;" class="text-3xl font-bold tracking-[0.5em] text-[#161D15]">福利制度</h2>
+        </div>
+        <div class="max-w-xl mx-auto leading-[2.5] tracking-[0.2em] p-8 md:p-12 shadow-2xl benefit-card">
+            <div class="line">• 學期嘉獎與榮譽記錄</div>
+            <div class="line">• 團結訓練與抗壓性磨練</div>
+            <div class="line">• 一輩子共生死的夥伴情誼</div>
+        </div>
+    </section>
+</div>
+
+<footer class="py-20 text-center text-[#737C75]">
+    <div class="mb-10">
+        <a href="https://www.instagram.com/fsfb_116th/" target="_blank" class="ig-icon">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <p class="mt-4 text-xs tracking-[0.4em] uppercase px-4">Follow our journey @fsfb_116th</p>
+    </div>
+    <div class="text-xs tracking-[0.5em] md:tracking-[0.8em] px-4">FSSH FLAG BEARER &copy; 2026 SPIRIT NEVER DIES</div>
+</footer>
+
+<script>
+// Scroll + Section fade
+const sections = document.querySelectorAll(".fade-section");
+const navLinks = document.querySelectorAll(".side-nav a");
+
+function handleScroll() {
+    const trigger = window.innerHeight * 0.85;
+
+    // Section 丝滑動畫
+    sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if(rect.top < trigger){
+            section.classList.add("show");
+            const lines = section.querySelectorAll(".line");
+            lines.forEach((line,index)=>{
+                setTimeout(()=>{line.classList.add("show");}, index*250);
+            });
+        }
+    });
+
+    // Nav active 動態
+    sections.forEach(section => {
+        const id = section.getAttribute("id");
+        const targetLink = document.querySelector(`.side-nav a[href="#${id}"]`);
+        const rect = section.getBoundingClientRect();
+        if(rect.top < window.innerHeight/2 && rect.bottom > window.innerHeight/2){
+            targetLink?.classList.add("active");
+        } else {
+            targetLink?.classList.remove("active");
+        }
+    });
+}
+
+window.addEventListener("scroll", handleScroll);
+window.addEventListener("load", handleScroll);
+
+// Particle 系統
+window.addEventListener("load", () => {
+    const particleContainer = document.getElementById('particle-container');
+    const isMobile = window.innerWidth < 768;
+    const particleCount = isMobile ? 12 : 25; 
+    for(let i=0;i<particleCount;i++){
+        const g = document.createElement('div');
+        g.className='glow';
+        g.style.top = Math.random()*100+'vh';
+        g.style.left = Math.random()*100+'vw';
+        const size=(Math.random()*(isMobile?8:15)+10)+'px';
+        g.style.width=g.style.height=size;
+        g.style.animationDelay=Math.random()*10+'s';
+        g.style.background=Math.random()>0.5?'#AB8C83':'#C5AB89';
+        g.style.boxShadow=`0 0 20px 5px ${g.style.background}88`;
+        particleContainer.appendChild(g);
+    }
+});
+
+// Hero 視差
+window.addEventListener("scroll",()=>{
+    const hero = document.querySelector(".hero-bg");
+    hero.style.backgroundPosition = `center ${window.scrollY*0.5}px`;
+});
+</script>
+</body>
+</html>
