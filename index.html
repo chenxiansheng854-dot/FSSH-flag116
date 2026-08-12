@@ -10,7 +10,9 @@
 
 <style>
 html { scroll-behavior: smooth; }
-body { font-family: 'Noto Serif TC', serif; background-color: #E1E1DF; color: #161D15; margin: 0; overflow-x: hidden; }
+body { font-family: 'Noto Serif TC', serif;
+       background-color: #E1E1DF;color: #161D15; margin: 0;
+       overflow-x: hidden; }
 section { scroll-margin-top: 15vh; }
 
 /* Hero 背景 + 視差效果 */
@@ -84,10 +86,15 @@ section { scroll-margin-top: 15vh; }
 /* 手機版 */
 @media (max-width:768px){
     .hero-bg { background-attachment: scroll; }
-    .vertical-title-container { font-size: 2.5rem !important; letter-spacing: 0.4em !important; }
+    .vertical-title-container { font-size: 2.5rem !important;
+     letter-spacing: 0.4em !important; }
     .side-nav { display: none; }
-    .fade-section { flex-direction: column !important; text-align: left !important; margin-bottom: 25vh !important; margin-top: 10vh !important; padding: 40px 20px !important; }
-    .mr-12, .ml-12 { margin: 0 !important; margin-bottom: 20px !important; }
+    .fade-section { flex-direction: column !important; 
+    text-align: left !important; 
+    margin-bottom: 25vh !important; margin-top: 10vh !important;
+     padding: 40px 20px !important; }
+    .mr-12, .ml-12 { margin: 0 !important; 
+    margin-bottom: 20px !important; }
     .line-group, .line-group div { text-align: left !important; }
 }
 </style>
@@ -97,23 +104,31 @@ section { scroll-margin-top: 15vh; }
 
 <div id="particle-container"></div>
 
+<!--電腦版側邊板板-->
 <nav class="side-nav">
     <a href="#about">工作內容</a>
     <a href="#training">訓練時間</a>
     <a href="#benefits">福利制度</a>
 </nav>
 
+<!--首頁標題-->
+
 <section class="hero-bg">
     <div class="title-frame">
         <h1 class="vertical-title-container hero-title text-5xl md:text-8xl font-bold text-white drop-shadow-2xl">
             <span>鳳中旗手</span>
-        </h1>
-    </div>
+
+        </div>
 </section>
 
+<!--內容們-->
+
 <div class="max-w-4xl mx-auto px-6 md:px-10">
+    <!--工作內容-->
     <section id="about" class="fade-section mt-[20vh] md:mt-[40vh] flex items-start">
+        <!--標題格式：直式書寫，粗體，文字顏色，吧啦吧啦-->
         <div class="mr-12"><h2 style="writing-mode: vertical-rl;" class="text-3xl font-bold tracking-[0.5em] text-[#161D15]">工作內容</h2></div>
+       <!--內文，字體大小-->
         <div class="line-group leading-loose tracking-widest text-lg md:pt-16">
             <div class="line">不容落地的旗幟、鳳中的精神傳承</div>
             <div class="line">我們升起國旗、拉開大會旗</div>
@@ -122,36 +137,41 @@ section { scroll-margin-top: 15vh; }
         </div>
     </section>
 
-    <section id="training" class="fade-section flex flex-row-reverse items-start">
-        <div class="ml-12"><h2 style="writing-mode: vertical-rl;" class="text-3xl font-bold tracking-[0.5em] text-[#161D15]">訓練時間</h2></div>
-        <div class="line-group leading-loose tracking-widest text-lg md:pt-16 text-right">
-            <div class="line">平日練習｜</div>
-            <div class="line">每周二、四 12：10</div>
+ 
+    <section id="training" class="fade-section mt-[20vh] md:mt-[40vh] flex items-start">
+        <!--標題格式：直式書寫，粗體，文字顏色，吧啦吧啦-->
+        <div class="mr-12"><h2 style="writing-mode: vertical-rl;" class="text-3xl font-bold tracking-[0.5em] text-[#161D15]">練習時間</h2></div>
+        <!--內文，字體大小-->
+        <div class="line-group leading-loose tracking-widest text-lg md:pt-16">
+            <div class="line">平日練習｜每周二、四 12：10</div>
             <div class="line">專注、負責、堅持</div>
             <div class="line">每一次跨步都是為了一次閃耀</div>
         </div>
     </section>
 
-    <section id="benefits" class="fade-section">
-        <div class="flex flex-col items-center justify-center mb-10 md:mb-16">
-            <h2 style="writing-mode: vertical-rl;" class="text-3xl font-bold tracking-[0.5em] text-[#161D15]">福利制度</h2>
-        </div>
-        <div class="max-w-xl mx-auto leading-[2.5] tracking-[0.2em] p-8 md:p-12 shadow-2xl benefit-card">
-            <div class="line">• 學期嘉獎與榮譽記錄</div>
-            <div class="line">• 團結訓練與抗壓性磨練</div>
-            <div class="line">• 一輩子共生死的夥伴情誼</div>
+
+  
+    <section id="benefits" class="fade-section mt-[20vh] md:mt-[40vh] flex items-start">
+        <!--標題格式：直式書寫，粗體，文字顏色，吧啦吧啦-->
+        <div class="mr-12"><h2 style="writing-mode: vertical-rl;" class="text-3xl font-bold tracking-[0.5em] text-[#161D15]">福利制度</h2></div>
+        <!--內文，字體大小-->
+        <div class="line-group leading-loose tracking-widest text-lg md:pt-16">
+            <div class="line">學期嘉獎與榮譽記錄</div>
+            <div class="line">團結訓練與抗壓性磨練</div>
+            <div class="line">一輩子共生死的夥伴情誼</div>
         </div>
     </section>
 </div>
 
-<footer class="py-20 text-center text-[#737C75]">
+<!--！！！內文顏色在這裡！！！-->
+<footer class="py-20 text-center text-[#313532]">
     <div class="mb-10">
         <a href="https://www.instagram.com/fsfb_116th/" target="_blank" class="ig-icon">
             <i class="fa-brands fa-instagram"></i>
         </a>
         <p class="mt-4 text-xs tracking-[0.4em] uppercase px-4">Follow our journey @fsfb_116th</p>
     </div>
-    <div class="text-xs tracking-[0.5em] md:tracking-[0.8em] px-4">FSSH FLAG BEARER &copy; 2026 SPIRIT NEVER DIES</div>
+    <div class="text-xs tracking-[0.5em] md:tracking-[0.8em] px-4">FSSH FLAG BEARERS &copy; 2026 SPIRIT NEVER DIES</div>
 </footer>
 
 <script>
@@ -162,7 +182,7 @@ const navLinks = document.querySelectorAll(".side-nav a");
 function handleScroll() {
     const trigger = window.innerHeight * 0.85;
 
-    // Section 丝滑動畫
+    // Section 動畫
     sections.forEach(section => {
         const rect = section.getBoundingClientRect();
         if(rect.top < trigger){
